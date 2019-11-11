@@ -1,6 +1,5 @@
 <template>
     <div>
-        我是一个标准模板
         <router-view></router-view>
     </div>
 </template>

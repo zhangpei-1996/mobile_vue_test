@@ -5,53 +5,31 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/',
-        name: 'index',
-        component: () => import('../views/Index.vue')
-    },
-    {
-        path: '/haha',
-        name: 'haha',
-        component: () => import('../views/Haha.vue'),
+        path: '/paidan',
+        name: 'paidan',
+        component: () => import('../views/paidan/Paidan.vue'),
+        redirect: {
+            name: 'maoxiansuo'
+        },
         children: [
             {
-                path: 'daxiao',
-                name: 'daxiao',
-                component: () => import('../views/Daxiao.vue')
+                path: 'maoxiansuo',
+                name: 'maoxiansuo',
+                component: () => import('../views/paidan/Maoxiansuo.vue')
             },
             {
-                path: 'pixiaoroubuxiao',
-                name: 'pixiaoroubuxiao',
-                component: () => import('../views/Pixiaoroubuxiao.vue')
-            },
-            {
-                path: '*',
-                redirect: {
-                    name: 'daxiao'
-                }
-            }
-        ]
-    },
-    {
-        path: '/xixi',
-        name: 'xixi',
-        component: () => import('../views/Xixi.vue'),
-        children: [
-            {
-                path: ':id',
-                name: 'xiaohua',
-                component: () => import('../views/Xiaohua.vue')
+                path: 'genjinzhong',
+                name: 'genjinzhong',
+                component: () => import('../views/paidan/Genjinzhong.vue')
             }
         ]
     },
     {
         path: '*',
-        redirect: '/'
+        redirect: {
+            name: 'paidan'
+        }
     }
 ];
-
-const router = new VueRouter({
-    routes
-});
 
 export default router;

@@ -1,7 +1,6 @@
-﻿<template>
+<template>
     <div>
-        我是一个嘻嘻组件
-        <router-view></router-view>
+        我是冒险所
     </div>
 </template>
 
