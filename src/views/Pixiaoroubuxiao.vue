@@ -1,7 +1,6 @@
 <template>
     <div>
-        我是一个标准模板
-        <router-view></router-view>
+        我是皮笑肉不笑
     </div>
 </template>
 

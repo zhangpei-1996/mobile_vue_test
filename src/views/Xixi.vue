@@ -1,6 +1,6 @@
-<template>
+﻿<template>
     <div>
-        我是一个标准模板
+        我是一个嘻嘻组件
         <router-view></router-view>
     </div>
 </template>
