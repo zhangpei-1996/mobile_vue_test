@@ -25,6 +25,21 @@ const routes = [
         ]
     },
     {
+        path: '/yinyue',
+        name: 'yinyue',
+        component: () => import('../views/yinyue/Yinyue.vue')
+    },
+    {
+        path: '/lvyou',
+        name: 'lvyou',
+        component: () => import('../views/lvyou/Lvyou.vue')
+    },
+    {
+        path: '/index',
+        name: 'index',
+        component: () => import('../views/index/Index.vue')
+    },
+    {
         path: '*',
         redirect: {
             name: 'paidan'
