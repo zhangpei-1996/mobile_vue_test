@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="paidan">
         <header>
             <ul>
                 <li v-tap="'maoxiansuo'" :class="{'cur': nowColumnName == 'maoxiansuo'}">毛线索</li>
@@ -28,23 +28,32 @@ export default {
 
 <style lang="less" scoped>
     @import url(../../less/var.less);
-    header{
-        width: 100%;
-        height: 40px;
-        ul{
-            display: flex;
+    .paidan{
+        padding-top: 40px;
+        header{
+            width: 100%;
             height: 40px;
-            text-align: center;
+            position: fixed;
+            top:0;
+            left:0;
+            z-index:9999;
+            background-color: white;
+            ul{
+                display: flex;
+                height: 40px;
+                text-align: center;
 
-            @h: 40px;
-            li{
-                flex:1;
-                height: @h;
-                line-height: @h;
-                box-sizing: border-box;
-                font-size: 14px;
-                &.cur{
-                    border-bottom: 2px solid @cur-color;
+                @h: 40px;
+                li{
+                    flex:1;
+                    height: @h;
+                    line-height: @h;
+                    box-sizing: border-box;
+                    font-size: 14px;
+                    cursor: pointer;
+                    &.cur{
+                        border-bottom: 2px solid @cur-color;
+                    }
                 }
             }
         }

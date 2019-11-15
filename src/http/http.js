@@ -3,27 +3,17 @@ import axios from 'axios';
 
 const instance = axios.create({
     baseURL: 'http://192.168.2.250/',
-    timeout: 1000
+    timeout: 20000
 });
 
 const get = {
-    getNews(callback) {
-        instance.get('http://192.168.2.250/news').then((data) => {
-            callback(data);
-        });
-        callback({
-            data: [
-                { title: 'adsfadsf', ' link ': 'adsfadf' },
-                { title: 'adsfadsf', ' link ': 'adsfadf' },
-                { title: 'adsfadsf', ' link ': 'adsfadf' },
-                { title: 'adsfadsf', ' link ': 'adsfadf' }
-            ]
-        });
+    getGenjinzhong(params, callback) {
+        instance.get('http://127.0.0.1:3000/gjz?page=' + params.page).then(data => callback(data));
     }
 };
 
 export default {
-    get(fnName, callback) {
-        get[fnName](callback);
+    get(fnName, params, callback) {
+        get[fnName](params, callback);
     }
 };
