@@ -7,6 +7,7 @@ const routes = [
     {
         path: '/paidan',
         name: 'paidan',
+        meta: { A: 'paidan' },
         component: () => import('../views/paidan/Paidan.vue'),
         redirect: {
             name: 'maoxiansuo'
@@ -15,11 +16,13 @@ const routes = [
             {
                 path: 'maoxiansuo',
                 name: 'maoxiansuo',
+                meta: { A: 'paidan' },
                 component: () => import('../views/paidan/Maoxiansuo.vue')
             },
             {
                 path: 'genjinzhong',
                 name: 'genjinzhong',
+                meta: { A: 'paidan' },
                 component: () => import('../views/paidan/Genjinzhong.vue')
             }
         ]
@@ -27,22 +30,31 @@ const routes = [
     {
         path: '/yinyue',
         name: 'yinyue',
+        meta: { A: 'yinyue' },
         component: () => import('../views/yinyue/Yinyue.vue')
     },
     {
-        path: '/lvyou',
-        name: 'lvyou',
-        component: () => import('../views/lvyou/Lvyou.vue')
+        path: '/travel',
+        name: 'travel',
+        meta: { A: 'travel' },
+        component: () => import('../views/travel/Travel.vue')
     },
     {
         path: '/index',
         name: 'index',
+        meta: { A: 'index' },
         component: () => import('../views/index/Index.vue')
+    },
+    {
+        path: '/mendiandetail/:id',
+        name: 'mendiandetail',
+        meta: { A: 'index' },
+        component: () => import('../views/mendiandetail/Mendiandetail.vue')
     },
     {
         path: '*',
         redirect: {
-            name: 'paidan'
+            name: 'yinyue'
         }
     }
 ];

@@ -1,8 +1,8 @@
 <template>
-    <div v-infinite-scroll="loadMore">
+    <div v-infinite-scroll="loadMore" infinite-scroll-distance="50">
         <div class="grid" v-for="item in arr" :key="item.id">
             <div class="picbox">
-                <img :src="`http://192.168.1.175:3000/images/${item.picUrl}`" alt="">
+                <img :src="`http://192.168.1.196:3000/images/${item.picUrl}`" alt="">
             </div>
             <div class="wordbox">
                 <p>
