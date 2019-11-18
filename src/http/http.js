@@ -23,7 +23,10 @@ const get = {
     getCar(params, callback) {
         instance.get('http://www.aiqianduan.com:7897/cars?' + querystring.stringify({
             page: params.page,
-            color: params.color.join('v')
+            color: params.color.join('v'),
+            exhaust: params.exhaust.join('v'),
+            engine: params.engine.join('v'),
+            fuel: params.fuel.join('v')
         })).then(data => callback(data));
     }
 };

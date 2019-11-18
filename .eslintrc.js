@@ -15,7 +15,8 @@ rules: {
   'prefer-template': [0],
   'no-new': [0],
   'no-confusing-arrow': [0],
-  'no-lonely-if': [0]
+  'no-lonely-if': [0],
+  'max-len': [0]
 },
 parserOptions: {
   parser: 'babel-eslint',

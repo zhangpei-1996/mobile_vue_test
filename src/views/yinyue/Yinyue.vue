@@ -1,8 +1,8 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" @click="isShowDrawer = false">
     <div class="">
         <div class="btn_s">
-            <img src="/images/sx.png" alt="">
+            <img src="/images/sx.png" @click.stop="isShowDrawer = true">
         </div>
     </div>
     <div class="carbox" v-infinite-scroll="loadMore" infinite-scroll-distance="100">
@@ -19,22 +19,32 @@
             </div>
         </div>
     </div>
-    <div class="drawer"></div>
+    <div :class="['drawer', {'cur': isShowDrawer}]" @click.stop="">
+        <DI :color="color" :exhaust="exhaust" :fuel="fuel" :engine="engine" @ok="okHan" />
+    </div>
   </div>
 </template>
 
 <script>
 import { Indicator } from 'mint-ui';
+import DI from './DrawerInner.vue';
 
 import http from '../../http/http';
 
 export default {
+    components: {
+        DI
+    },
     data() {
         return {
             arr: [],
             page: 1,
             lock: true,
-            color: ['红', '蓝']
+            color: [],
+            exhaust: ['国三', '国五'],
+            fuel: ['汽油'],
+            engine: [],
+            isShowDrawer: false
         };
     },
     created() {
@@ -51,7 +61,13 @@ export default {
                 });
                 // 关掉节流锁
                 this.lock = false;
-                http.get('getCar', { page: this.page, color: this.color }, (data) => {
+                http.get('getCar', {
+                    page: this.page,
+                    color: this.color,
+                    exhaust: this.exhaust,
+                    fuel: this.fuel,
+                    engine: this.engine
+                }, (data) => {
                     this.arr = [...this.arr, ...data.data.results];
                     // 打开节流锁
                     this.lock = true;
@@ -64,6 +80,16 @@ export default {
             this.page += 1;
             this.loadData();
             console.log('请求更多数据');
+        },
+        okHan(obj) {
+            this.page = 1;
+            this.color = obj.my_color;
+            this.fuel = obj.my_fuel;
+            this.engine = obj.my_engine;
+            this.exhaust = obj.my_exhaust;
+            this.arr = [];
+            this.loadData();
+            this.isShowDrawer = false;
         }
     }
 };
@@ -88,6 +114,19 @@ export default {
             flex: 1;
             margin-left:10px;
         }
+    }
+}
+.drawer{
+    position: fixed;
+    top:0;
+    right:-100%;
+    width:75%;
+    height:100%;
+    background:white;
+    box-shadow: -1px 0px 10px black;
+    transition:all .4s ease 0s;
+    &.cur{
+        right:0;
     }
 }
 </style>
